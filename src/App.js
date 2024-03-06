@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 const productsList = [
   { id: 'a', name: 'Tomato' },
@@ -29,6 +28,7 @@ const Product = ({ name, onAddToCart }) => {
       setQuantity(newQuantity);
       onAddToCart(name, newQuantity);
     }
+      //else {quantity===0}{delete updatedCart[item.name]}
   };
   return (
     <div>
@@ -44,6 +44,11 @@ const Product = ({ name, onAddToCart }) => {
 const App = () => {
   const [cart, setCart] = useState([]);
   const addToCart = (productName, productQuantity) => {
+    // let updatedCart;
+//     // if (productQuantity === 0) {
+//     //   // Remove the item from the cart if quantity is 0
+//     //   updatedCart = cart.filter(item => item.name !== productName);
+//     // }else
     const updatedCart = cart.map(item =>
       item.name === productName ? { ...item, quantity: productQuantity } : item
     );
